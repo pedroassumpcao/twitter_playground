@@ -3,8 +3,13 @@ defmodule TwitterPlayground.TweetsChannel do
   alias TwitterPlayground.TweetStreamer
 
   def join("tweets", %{"track" => query}, socket) do
-    spawn(fn -> TweetStreamer.start(socket, query) end)
+    send(self, {:after_join, query})
     {:ok, socket}
+  end
+
+  def handle_info({:after_join, query}, socket) do
+    spawn(fn -> TweetStreamer.start(socket, query) end)
+    {:noreply, socket}
   end
 
 end
