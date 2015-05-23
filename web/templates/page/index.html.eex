@@ -1,0 +1,6 @@
+<h1>ExTwitter</h1>
+<div class="row">
+  <div class="col-lg-12">
+    <ul id="tweets"></ul>
+  </div>
+</div>
