@@ -2,7 +2,7 @@ import {Socket} from "phoenix"
 
 let socket = new Socket("/ws")
 socket.connect()
-let chan = socket.chan("tweets", {track: "apple"})
+let chan = socket.chan("tweets", {track: "Raise.com"})
 
 chan.join().receive("ok", chan => {
     console.log("Success!")
@@ -10,7 +10,6 @@ chan.join().receive("ok", chan => {
 
 let tweetsContainer = $('#tweets')
 chan.on("tweet:stream", payload => {
-  console.log(payload)
   tweetsContainer.prepend(`<li>${payload.tweet.text}</li>`)
 })
 
