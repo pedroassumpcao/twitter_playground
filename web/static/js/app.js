@@ -11,7 +11,7 @@ chan.join().receive("ok", chan => {
 let tweetsContainer = $('#tweets')
 chan.on("tweet:stream", payload => {
   console.log(payload)
-  tweetsContainer.prepend(`<li>${payload.text}</li>`)
+  tweetsContainer.prepend(`<li>${payload.tweet.text}</li>`)
 })
 
 let App = {
